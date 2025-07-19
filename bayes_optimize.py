@@ -33,7 +33,8 @@ best = fmin(
     space=search_space, 
     algo=tpe.suggest,
     max_evals=120, # khảo sát 120 bộ tham số (120 model)
-    trials=trials)
+    trials=trials
+)
 
 with open('bayes_optimize_results.csv', 'w', newline='') as f:
     writer = csv.writer(f)

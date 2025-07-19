@@ -66,14 +66,15 @@ if __name__ == '__main__':
     score_lst = []
     for i_repeat in range(n_repeat):
         args = parse_train_args()
-        args.data_path = './data/bbbp.csv'
+        args.no_cuda = True # GPU => đổi thành False
+        args.data_path = './data/bbbp.csv' # file để train
         args.dataset_type = 'classification' # regression
         args.num_folds = 5
-        args.gpu = 0
+        # args.gpu = 0
         args.epochs = 30
         args.ensemble_size = 1
         args.batch_size = 64
-        args.split_sizes = [0.7, 0.1, 0.2] # 5-fold cross-validation
+        args.split_sizes = [0.8, 0.1, 0.1] # split train/val/test
         args.seed += i_repeat * 100
         
         modify_train_args(args)

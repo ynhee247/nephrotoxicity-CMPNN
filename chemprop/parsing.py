@@ -224,7 +224,7 @@ def modify_predict_args(args: Namespace):
     update_checkpoint_args(args)
 
     args.cuda = not args.no_cuda and torch.cuda.is_available()
-    del args.no_cuda
+    # del args.no_cuda
 
     # Create directory for preds path
     makedirs(args.preds_path, isfile=True)
@@ -264,7 +264,7 @@ def modify_train_args(args: Namespace):
         args.save_dir = temp_dir.name
 
     args.cuda = not args.no_cuda and torch.cuda.is_available()
-    del args.no_cuda
+    # del args.no_cuda
 
     args.features_scaling = not args.no_features_scaling
     del args.no_features_scaling
