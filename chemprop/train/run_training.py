@@ -11,7 +11,7 @@ import torch
 import pickle
 from torch.optim.lr_scheduler import ExponentialLR
 
-from .evaluate import evaluate, evaluate_predictions
+from .evaluate import evaluate, evaluate_predictions, classification_report
 from .predict import predict
 from .train import train
 from chemprop.data import StandardScaler
@@ -265,6 +265,15 @@ def run_training(args: Namespace, logger: Logger = None) -> List[float]:
         dataset_type=args.dataset_type,
         logger=logger
     )
+
+    if args.dataset_type == 'classification':
+        metrics = classification_report(avg_test_preds, test_targets, args.num_tasks)
+        info('Ensemble metrics: ' +
+             f"AUC={np.nanmean(metrics['auc']):.6f}, "
+             f"Accuracy={np.nanmean(metrics['accuracy']):.6f}, "
+             f"Precision={np.nanmean(metrics['precision']):.6f}, "
+             f"Recall={np.nanmean(metrics['recall']):.6f}, "
+             f"F1={np.nanmean(metrics['f1']):.6f}")
 
     # Average ensemble score
     avg_ensemble_test_score = np.nanmean(ensemble_scores)
