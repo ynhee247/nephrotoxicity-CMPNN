@@ -36,9 +36,18 @@ The code was built based on [DMPNN](https://github.com/chemprop/chemprop). Thank
 + torch >= 1.2.0
 
 Tips: Using code `conda install -c rdkit rdkit` can help you install package RDKit quickly.
+
+## Set GPU
+
+Hiện tại đang set CPU
+
+**chemprop\parsing.py** => `del args.no_cuda` (line 227, 267) => xóa comment đi
+**train_demo.py** => `args.no_cuda = False` (line 69) + xóa comment `args.gpu = 0` (line 73)
+**bayes_optimize** => `args.no_cuda = False` (line 18)
+
 ## Training
 
-To run the demo code on dataset BBBP, run:
+To run the demo code on dataset CMPNN3, run:
 
 `python train_demo.py` 
 
