@@ -107,3 +107,47 @@ def evaluate(model: nn.Module,
     )
 
     return results
+
+# Add metrics: accuracy, precision, recall, F1, AUC
+def classification_report(preds: List[List[float]],
+                          targets: List[List[float]],
+                          num_tasks: int) -> dict:
+    """Computes common classification metrics.
+
+    :param preds: List of predictions with shape (data_size, num_tasks).
+    :param targets: List of targets with shape (data_size, num_tasks).
+    :param num_tasks: Number of tasks.
+    :return: Dictionary mapping metric name to list of scores per task.
+    """
+    from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
+
+    metrics = {
+        'accuracy': [],
+        'precision': [],
+        'recall': [],
+        'f1': [],
+        'auc': []
+    }
+
+    for task in range(num_tasks):
+        task_preds = []
+        task_targets = []
+        for i in range(len(preds)):
+            if targets[i][task] is not None:
+                task_preds.append(preds[i][task])
+                task_targets.append(targets[i][task])
+
+        if len(task_targets) == 0 or len(set(task_targets)) < 2:
+            for key in metrics:
+                metrics[key].append(float('nan'))
+            continue
+
+        hard_preds = [1 if p > 0.5 else 0 for p in task_preds]
+
+        metrics['accuracy'].append(accuracy_score(task_targets, hard_preds))
+        metrics['precision'].append(precision_score(task_targets, hard_preds))
+        metrics['recall'].append(recall_score(task_targets, hard_preds))
+        metrics['f1'].append(f1_score(task_targets, hard_preds))
+        metrics['auc'].append(roc_auc_score(task_targets, task_preds))
+
+    return metrics
