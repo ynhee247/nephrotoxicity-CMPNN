@@ -18,7 +18,7 @@ def objective(params):
     args.no_cuda = True # GPU => đổi thành False
     args.dataset_type = 'classification'
     args.metric = 'auc'
-    args.data_path = './data/bbbp.csv'
+    args.data_path = './data/CMPNN3.csv'
     args.dropout = params['dropout']
     args.depth = params['depth']
     args.hidden_size = params['hidden_size']

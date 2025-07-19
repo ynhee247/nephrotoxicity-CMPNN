@@ -67,7 +67,7 @@ if __name__ == '__main__':
     for i_repeat in range(n_repeat):
         args = parse_train_args()
         args.no_cuda = True # GPU => đổi thành False
-        args.data_path = './data/bbbp.csv' # file để train
+        args.data_path = './data/CMPNN3.csv' # file để train
         args.dataset_type = 'classification' # regression
         args.num_folds = 5
         # args.gpu = 0
