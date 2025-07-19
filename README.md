@@ -42,8 +42,14 @@ Tips: Using code `conda install -c rdkit rdkit` can help you install package RDK
 Hiện tại đang set CPU
 
 **chemprop\parsing.py** => `del args.no_cuda` (line 227, 267) => xóa comment đi
+
 **train_demo.py** => `args.no_cuda = False` (line 69) + xóa comment `args.gpu = 0` (line 73)
+
 **bayes_optimize** => `args.no_cuda = False` (line 18)
+
+## Bayesian Optimization
+
+Run: `python bayes_optimize.py --num_folds 5 --epochs 30`
 
 ## Training
 
