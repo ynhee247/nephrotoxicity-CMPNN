@@ -16,6 +16,7 @@ from chemprop.parsing import parse_train_args, modify_train_args
 from chemprop.utils import create_logger
 from chemprop.parsing import parse_predict_args
 from chemprop.train import make_predictions
+import torch
 
 def cross_validate(args: Namespace, logger: Logger = None) -> Tuple[float, float]:
     """k-fold cross validation"""
@@ -66,11 +67,12 @@ if __name__ == '__main__':
     score_lst = []
     for i_repeat in range(n_repeat):
         args = parse_train_args()
-        args.no_cuda = True # GPU => đổi thành False
-        args.data_path = './data/CMPNN3.csv' # file để train
+        use_gpu = torch.cuda.is_available()
+        args.no_cuda = not use_gpu
+        args.gpu = 0 if use_gpu else None
+        args.data_path = './data/CMPNN3_filtered.csv' # file để train
         args.dataset_type = 'classification' # regression
         args.num_folds = 5
-        # args.gpu = 0
         args.epochs = 30
         args.ensemble_size = 1
         args.batch_size = 64
@@ -78,6 +80,7 @@ if __name__ == '__main__':
         args.seed += i_repeat * 100
         
         modify_train_args(args)
+        print('Using device:', 'cuda' if args.cuda else 'cpu')
         logger = create_logger(name='train', save_dir=args.save_dir, quiet=args.quiet)
         mean_auc_score, std_auc_score = cross_validate(args, logger)
         score_lst.append(mean_auc_score)

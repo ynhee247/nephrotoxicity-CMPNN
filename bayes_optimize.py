@@ -2,6 +2,7 @@ import csv
 from hyperopt import fmin, tpe, hp, Trials, STATUS_OK
 from chemprop.parsing import parse_train_args, modify_train_args
 from train import cross_validate
+import torch
 
 search_space = {
     'dropout': hp.uniform('dropout', 0.0, 0.5), # tỉ lệ bỏ học
@@ -15,15 +16,18 @@ trials = Trials()
 
 def objective(params):
     args = parse_train_args()
-    args.no_cuda = True # GPU => đổi thành False
+    use_gpu = torch.cuda.is_available()
+    args.no_cuda = not use_gpu
+    args.gpu = 0 if use_gpu else None
     args.dataset_type = 'classification'
     args.metric = 'auc'
-    args.data_path = './data/CMPNN3.csv'
+    args.data_path = './data/CMPNN3_filtered.csv'
     args.dropout = params['dropout']
     args.depth = params['depth']
     args.hidden_size = params['hidden_size']
     args.ffn_num_layers = params['ffn_num_layers']
     modify_train_args(args)
+    print('Using device:', 'cuda' if args.cuda else 'cpu')
     auc, _ = cross_validate(args)
     return {'loss': -auc, 'status': STATUS_OK, 'params': params, 'auc': auc}
 

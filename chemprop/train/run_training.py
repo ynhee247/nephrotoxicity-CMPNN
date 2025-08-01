@@ -39,6 +39,8 @@ def run_training(args: Namespace, logger: Logger = None) -> List[float]:
     if args.gpu is not None:
         torch.cuda.set_device(args.gpu)
 
+    info(f'Using device: {"cuda" if args.cuda else "cpu"}')
+
     # Print args
 # =============================================================================
 #     debug(pformat(vars(args)))
