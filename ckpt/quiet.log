@@ -1,0 +1,555 @@
+Fold 0
+Using device: cuda
+Model 0 best validation auc = 0.764355 on epoch 20
+Model 0 test auc = 0.755462
+Ensemble metrics: AUC=0.755462, Accuracy=0.679775, Precision=0.685714, Recall=0.750000, F1=0.716418
+Ensemble test auc = 0.755462
+Fold 1
+Using device: cuda
+Model 0 best validation auc = 0.810969 on epoch 13
+Model 0 test auc = 0.669118
+Ensemble metrics: AUC=0.669118, Accuracy=0.584270, Precision=0.652174, Recall=0.588235, F1=0.618557
+Ensemble test auc = 0.669118
+Fold 2
+Using device: cuda
+Model 0 best validation auc = 0.738763 on epoch 11
+Model 0 test auc = 0.730469
+Ensemble metrics: AUC=0.730469, Accuracy=0.606742, Precision=0.754386, Recall=0.434343, F1=0.551282
+Ensemble test auc = 0.730469
+Fold 3
+Using device: cuda
+Model 0 best validation auc = 0.777175 on epoch 16
+Model 0 test auc = 0.732341
+Ensemble metrics: AUC=0.732341, Accuracy=0.657303, Precision=0.772727, Recall=0.525773, F1=0.625767
+Ensemble test auc = 0.732341
+Fold 4
+Using device: cuda
+Model 0 best validation auc = 0.786097 on epoch 12
+Model 0 test auc = 0.711024
+Ensemble metrics: AUC=0.711024, Accuracy=0.578652, Precision=0.491525, Recall=0.794521, F1=0.607330
+Ensemble test auc = 0.711024
+5-fold cross validation
+Seed 0 ==> test auc = 0.755462
+Seed 1 ==> test auc = 0.669118
+Seed 2 ==> test auc = 0.730469
+Seed 3 ==> test auc = 0.732341
+Seed 4 ==> test auc = 0.711024
+Overall test auc = 0.719683 +/- 0.028943
+Fold 0
+Fold 0
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.743909 on epoch 25
+Model 0 best validation auc = 0.743909 on epoch 25
+Model 0 test auc = 0.738330
+Model 0 test auc = 0.738330
+Ensemble metrics: AUC=0.738330, Accuracy=0.651685, Precision=0.637168, Recall=0.774194, F1=0.699029
+Ensemble metrics: AUC=0.738330, Accuracy=0.651685, Precision=0.637168, Recall=0.774194, F1=0.699029
+Ensemble test auc = 0.738330
+Ensemble test auc = 0.738330
+Fold 1
+Fold 1
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.721481 on epoch 27
+Model 0 best validation auc = 0.721481 on epoch 27
+Model 0 test auc = 0.741768
+Model 0 test auc = 0.741768
+Ensemble metrics: AUC=0.741768, Accuracy=0.651685, Precision=0.610000, Recall=0.726190, F1=0.663043
+Ensemble metrics: AUC=0.741768, Accuracy=0.651685, Precision=0.610000, Recall=0.726190, F1=0.663043
+Ensemble test auc = 0.741768
+Ensemble test auc = 0.741768
+Fold 2
+Fold 2
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.748231 on epoch 27
+Model 0 best validation auc = 0.748231 on epoch 27
+Model 0 test auc = 0.758526
+Model 0 test auc = 0.758526
+Ensemble metrics: AUC=0.758526, Accuracy=0.668539, Precision=0.725275, Recall=0.660000, F1=0.691099
+Ensemble metrics: AUC=0.758526, Accuracy=0.668539, Precision=0.725275, Recall=0.660000, F1=0.691099
+Ensemble test auc = 0.758526
+Ensemble test auc = 0.758526
+Fold 3
+Fold 3
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.787571 on epoch 22
+Model 0 best validation auc = 0.787571 on epoch 22
+Model 0 test auc = 0.735391
+Model 0 test auc = 0.735391
+Ensemble metrics: AUC=0.735391, Accuracy=0.679775, Precision=0.675676, Recall=0.781250, F1=0.724638
+Ensemble metrics: AUC=0.735391, Accuracy=0.679775, Precision=0.675676, Recall=0.781250, F1=0.724638
+Ensemble test auc = 0.735391
+Ensemble test auc = 0.735391
+Fold 4
+Fold 4
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.733586 on epoch 9
+Model 0 best validation auc = 0.733586 on epoch 9
+Model 0 test auc = 0.711633
+Model 0 test auc = 0.711633
+Ensemble metrics: AUC=0.711633, Accuracy=0.640449, Precision=0.598291, Recall=0.804598, F1=0.686275
+Ensemble metrics: AUC=0.711633, Accuracy=0.640449, Precision=0.598291, Recall=0.804598, F1=0.686275
+Ensemble test auc = 0.711633
+Ensemble test auc = 0.711633
+5-fold cross validation
+5-fold cross validation
+Seed 100 ==> test auc = 0.738330
+Seed 100 ==> test auc = 0.738330
+Seed 101 ==> test auc = 0.741768
+Seed 101 ==> test auc = 0.741768
+Seed 102 ==> test auc = 0.758526
+Seed 102 ==> test auc = 0.758526
+Seed 103 ==> test auc = 0.735391
+Seed 103 ==> test auc = 0.735391
+Seed 104 ==> test auc = 0.711633
+Seed 104 ==> test auc = 0.711633
+Overall test auc = 0.737130 +/- 0.015059
+Overall test auc = 0.737130 +/- 0.015059
+Fold 0
+Fold 0
+Fold 0
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.768487 on epoch 13
+Model 0 best validation auc = 0.768487 on epoch 13
+Model 0 best validation auc = 0.768487 on epoch 13
+Model 0 test auc = 0.748104
+Model 0 test auc = 0.748104
+Model 0 test auc = 0.748104
+Ensemble metrics: AUC=0.748104, Accuracy=0.691011, Precision=0.666667, Recall=0.804348, F1=0.729064
+Ensemble metrics: AUC=0.748104, Accuracy=0.691011, Precision=0.666667, Recall=0.804348, F1=0.729064
+Ensemble metrics: AUC=0.748104, Accuracy=0.691011, Precision=0.666667, Recall=0.804348, F1=0.729064
+Ensemble test auc = 0.748104
+Ensemble test auc = 0.748104
+Ensemble test auc = 0.748104
+Fold 1
+Fold 1
+Fold 1
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.710322 on epoch 20
+Model 0 best validation auc = 0.710322 on epoch 20
+Model 0 best validation auc = 0.710322 on epoch 20
+Model 0 test auc = 0.648261
+Model 0 test auc = 0.648261
+Model 0 test auc = 0.648261
+Ensemble metrics: AUC=0.648261, Accuracy=0.589888, Precision=0.631579, Recall=0.516129, F1=0.568047
+Ensemble metrics: AUC=0.648261, Accuracy=0.589888, Precision=0.631579, Recall=0.516129, F1=0.568047
+Ensemble metrics: AUC=0.648261, Accuracy=0.589888, Precision=0.631579, Recall=0.516129, F1=0.568047
+Ensemble test auc = 0.648261
+Ensemble test auc = 0.648261
+Ensemble test auc = 0.648261
+Fold 2
+Fold 2
+Fold 2
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.750127 on epoch 14
+Model 0 best validation auc = 0.750127 on epoch 14
+Model 0 best validation auc = 0.750127 on epoch 14
+Model 0 test auc = 0.724216
+Model 0 test auc = 0.724216
+Model 0 test auc = 0.724216
+Ensemble metrics: AUC=0.724216, Accuracy=0.640449, Precision=0.689189, Recall=0.554348, F1=0.614458
+Ensemble metrics: AUC=0.724216, Accuracy=0.640449, Precision=0.689189, Recall=0.554348, F1=0.614458
+Ensemble metrics: AUC=0.724216, Accuracy=0.640449, Precision=0.689189, Recall=0.554348, F1=0.614458
+Ensemble test auc = 0.724216
+Ensemble test auc = 0.724216
+Ensemble test auc = 0.724216
+Fold 3
+Fold 3
+Fold 3
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.744474 on epoch 28
+Model 0 best validation auc = 0.744474 on epoch 28
+Model 0 best validation auc = 0.744474 on epoch 28
+Model 0 test auc = 0.772992
+Model 0 test auc = 0.772992
+Model 0 test auc = 0.772992
+Ensemble metrics: AUC=0.772992, Accuracy=0.691011, Precision=0.656250, Recall=0.741176, F1=0.696133
+Ensemble metrics: AUC=0.772992, Accuracy=0.691011, Precision=0.656250, Recall=0.741176, F1=0.696133
+Ensemble metrics: AUC=0.772992, Accuracy=0.691011, Precision=0.656250, Recall=0.741176, F1=0.696133
+Ensemble test auc = 0.772992
+Ensemble test auc = 0.772992
+Ensemble test auc = 0.772992
+Fold 4
+Fold 4
+Fold 4
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.710057 on epoch 5
+Model 0 best validation auc = 0.710057 on epoch 5
+Model 0 best validation auc = 0.710057 on epoch 5
+Model 0 test auc = 0.733995
+Model 0 test auc = 0.733995
+Model 0 test auc = 0.733995
+Ensemble metrics: AUC=0.733995, Accuracy=0.646067, Precision=0.793103, Recall=0.474227, F1=0.593548
+Ensemble metrics: AUC=0.733995, Accuracy=0.646067, Precision=0.793103, Recall=0.474227, F1=0.593548
+Ensemble metrics: AUC=0.733995, Accuracy=0.646067, Precision=0.793103, Recall=0.474227, F1=0.593548
+Ensemble test auc = 0.733995
+Ensemble test auc = 0.733995
+Ensemble test auc = 0.733995
+5-fold cross validation
+5-fold cross validation
+5-fold cross validation
+Seed 200 ==> test auc = 0.748104
+Seed 200 ==> test auc = 0.748104
+Seed 200 ==> test auc = 0.748104
+Seed 201 ==> test auc = 0.648261
+Seed 201 ==> test auc = 0.648261
+Seed 201 ==> test auc = 0.648261
+Seed 202 ==> test auc = 0.724216
+Seed 202 ==> test auc = 0.724216
+Seed 202 ==> test auc = 0.724216
+Seed 203 ==> test auc = 0.772992
+Seed 203 ==> test auc = 0.772992
+Seed 203 ==> test auc = 0.772992
+Seed 204 ==> test auc = 0.733995
+Seed 204 ==> test auc = 0.733995
+Seed 204 ==> test auc = 0.733995
+Overall test auc = 0.725514 +/- 0.041967
+Overall test auc = 0.725514 +/- 0.041967
+Overall test auc = 0.725514 +/- 0.041967
+Fold 0
+Fold 0
+Fold 0
+Fold 0
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.742401 on epoch 13
+Model 0 best validation auc = 0.742401 on epoch 13
+Model 0 best validation auc = 0.742401 on epoch 13
+Model 0 best validation auc = 0.742401 on epoch 13
+Model 0 test auc = 0.740544
+Model 0 test auc = 0.740544
+Model 0 test auc = 0.740544
+Model 0 test auc = 0.740544
+Ensemble metrics: AUC=0.740544, Accuracy=0.623596, Precision=0.638298, Recall=0.645161, F1=0.641711
+Ensemble metrics: AUC=0.740544, Accuracy=0.623596, Precision=0.638298, Recall=0.645161, F1=0.641711
+Ensemble metrics: AUC=0.740544, Accuracy=0.623596, Precision=0.638298, Recall=0.645161, F1=0.641711
+Ensemble metrics: AUC=0.740544, Accuracy=0.623596, Precision=0.638298, Recall=0.645161, F1=0.641711
+Ensemble test auc = 0.740544
+Ensemble test auc = 0.740544
+Ensemble test auc = 0.740544
+Ensemble test auc = 0.740544
+Fold 1
+Fold 1
+Fold 1
+Fold 1
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.722384 on epoch 3
+Model 0 best validation auc = 0.722384 on epoch 3
+Model 0 best validation auc = 0.722384 on epoch 3
+Model 0 best validation auc = 0.722384 on epoch 3
+Model 0 test auc = 0.689690
+Model 0 test auc = 0.689690
+Model 0 test auc = 0.689690
+Model 0 test auc = 0.689690
+Ensemble metrics: AUC=0.689690, Accuracy=0.617978, Precision=0.671233, Recall=0.526882, F1=0.590361
+Ensemble metrics: AUC=0.689690, Accuracy=0.617978, Precision=0.671233, Recall=0.526882, F1=0.590361
+Ensemble metrics: AUC=0.689690, Accuracy=0.617978, Precision=0.671233, Recall=0.526882, F1=0.590361
+Ensemble metrics: AUC=0.689690, Accuracy=0.617978, Precision=0.671233, Recall=0.526882, F1=0.590361
+Ensemble test auc = 0.689690
+Ensemble test auc = 0.689690
+Ensemble test auc = 0.689690
+Ensemble test auc = 0.689690
+Fold 2
+Fold 2
+Fold 2
+Fold 2
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.747214 on epoch 8
+Model 0 best validation auc = 0.747214 on epoch 8
+Model 0 best validation auc = 0.747214 on epoch 8
+Model 0 best validation auc = 0.747214 on epoch 8
+Model 0 test auc = 0.740266
+Model 0 test auc = 0.740266
+Model 0 test auc = 0.740266
+Model 0 test auc = 0.740266
+Ensemble metrics: AUC=0.740266, Accuracy=0.662921, Precision=0.633588, Recall=0.873684, F1=0.734513
+Ensemble metrics: AUC=0.740266, Accuracy=0.662921, Precision=0.633588, Recall=0.873684, F1=0.734513
+Ensemble metrics: AUC=0.740266, Accuracy=0.662921, Precision=0.633588, Recall=0.873684, F1=0.734513
+Ensemble metrics: AUC=0.740266, Accuracy=0.662921, Precision=0.633588, Recall=0.873684, F1=0.734513
+Ensemble test auc = 0.740266
+Ensemble test auc = 0.740266
+Ensemble test auc = 0.740266
+Ensemble test auc = 0.740266
+Fold 3
+Fold 3
+Fold 3
+Fold 3
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.801035 on epoch 17
+Model 0 best validation auc = 0.801035 on epoch 17
+Model 0 best validation auc = 0.801035 on epoch 17
+Model 0 best validation auc = 0.801035 on epoch 17
+Model 0 test auc = 0.757472
+Model 0 test auc = 0.757472
+Model 0 test auc = 0.757472
+Model 0 test auc = 0.757472
+Ensemble metrics: AUC=0.757472, Accuracy=0.657303, Precision=0.703704, Recall=0.606383, F1=0.651429
+Ensemble metrics: AUC=0.757472, Accuracy=0.657303, Precision=0.703704, Recall=0.606383, F1=0.651429
+Ensemble metrics: AUC=0.757472, Accuracy=0.657303, Precision=0.703704, Recall=0.606383, F1=0.651429
+Ensemble metrics: AUC=0.757472, Accuracy=0.657303, Precision=0.703704, Recall=0.606383, F1=0.651429
+Ensemble test auc = 0.757472
+Ensemble test auc = 0.757472
+Ensemble test auc = 0.757472
+Ensemble test auc = 0.757472
+Fold 4
+Fold 4
+Fold 4
+Fold 4
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.658081 on epoch 15
+Model 0 best validation auc = 0.658081 on epoch 15
+Model 0 best validation auc = 0.658081 on epoch 15
+Model 0 best validation auc = 0.658081 on epoch 15
+Model 0 test auc = 0.743255
+Model 0 test auc = 0.743255
+Model 0 test auc = 0.743255
+Model 0 test auc = 0.743255
+Ensemble metrics: AUC=0.743255, Accuracy=0.702247, Precision=0.662500, Recall=0.670886, F1=0.666667
+Ensemble metrics: AUC=0.743255, Accuracy=0.702247, Precision=0.662500, Recall=0.670886, F1=0.666667
+Ensemble metrics: AUC=0.743255, Accuracy=0.702247, Precision=0.662500, Recall=0.670886, F1=0.666667
+Ensemble metrics: AUC=0.743255, Accuracy=0.702247, Precision=0.662500, Recall=0.670886, F1=0.666667
+Ensemble test auc = 0.743255
+Ensemble test auc = 0.743255
+Ensemble test auc = 0.743255
+Ensemble test auc = 0.743255
+5-fold cross validation
+5-fold cross validation
+5-fold cross validation
+5-fold cross validation
+Seed 300 ==> test auc = 0.740544
+Seed 300 ==> test auc = 0.740544
+Seed 300 ==> test auc = 0.740544
+Seed 300 ==> test auc = 0.740544
+Seed 301 ==> test auc = 0.689690
+Seed 301 ==> test auc = 0.689690
+Seed 301 ==> test auc = 0.689690
+Seed 301 ==> test auc = 0.689690
+Seed 302 ==> test auc = 0.740266
+Seed 302 ==> test auc = 0.740266
+Seed 302 ==> test auc = 0.740266
+Seed 302 ==> test auc = 0.740266
+Seed 303 ==> test auc = 0.757472
+Seed 303 ==> test auc = 0.757472
+Seed 303 ==> test auc = 0.757472
+Seed 303 ==> test auc = 0.757472
+Seed 304 ==> test auc = 0.743255
+Seed 304 ==> test auc = 0.743255
+Seed 304 ==> test auc = 0.743255
+Seed 304 ==> test auc = 0.743255
+Overall test auc = 0.734246 +/- 0.023159
+Overall test auc = 0.734246 +/- 0.023159
+Overall test auc = 0.734246 +/- 0.023159
+Overall test auc = 0.734246 +/- 0.023159
+Fold 0
+Fold 0
+Fold 0
+Fold 0
+Fold 0
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.740923 on epoch 23
+Model 0 best validation auc = 0.740923 on epoch 23
+Model 0 best validation auc = 0.740923 on epoch 23
+Model 0 best validation auc = 0.740923 on epoch 23
+Model 0 best validation auc = 0.740923 on epoch 23
+Model 0 test auc = 0.751680
+Model 0 test auc = 0.751680
+Model 0 test auc = 0.751680
+Model 0 test auc = 0.751680
+Model 0 test auc = 0.751680
+Ensemble metrics: AUC=0.751680, Accuracy=0.679775, Precision=0.672727, Recall=0.778947, F1=0.721951
+Ensemble metrics: AUC=0.751680, Accuracy=0.679775, Precision=0.672727, Recall=0.778947, F1=0.721951
+Ensemble metrics: AUC=0.751680, Accuracy=0.679775, Precision=0.672727, Recall=0.778947, F1=0.721951
+Ensemble metrics: AUC=0.751680, Accuracy=0.679775, Precision=0.672727, Recall=0.778947, F1=0.721951
+Ensemble metrics: AUC=0.751680, Accuracy=0.679775, Precision=0.672727, Recall=0.778947, F1=0.721951
+Ensemble test auc = 0.751680
+Ensemble test auc = 0.751680
+Ensemble test auc = 0.751680
+Ensemble test auc = 0.751680
+Ensemble test auc = 0.751680
+Fold 1
+Fold 1
+Fold 1
+Fold 1
+Fold 1
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.768627 on epoch 13
+Model 0 best validation auc = 0.768627 on epoch 13
+Model 0 best validation auc = 0.768627 on epoch 13
+Model 0 best validation auc = 0.768627 on epoch 13
+Model 0 best validation auc = 0.768627 on epoch 13
+Model 0 test auc = 0.738005
+Model 0 test auc = 0.738005
+Model 0 test auc = 0.738005
+Model 0 test auc = 0.738005
+Model 0 test auc = 0.738005
+Ensemble metrics: AUC=0.738005, Accuracy=0.640449, Precision=0.653846, Recall=0.579545, F1=0.614458
+Ensemble metrics: AUC=0.738005, Accuracy=0.640449, Precision=0.653846, Recall=0.579545, F1=0.614458
+Ensemble metrics: AUC=0.738005, Accuracy=0.640449, Precision=0.653846, Recall=0.579545, F1=0.614458
+Ensemble metrics: AUC=0.738005, Accuracy=0.640449, Precision=0.653846, Recall=0.579545, F1=0.614458
+Ensemble metrics: AUC=0.738005, Accuracy=0.640449, Precision=0.653846, Recall=0.579545, F1=0.614458
+Ensemble test auc = 0.738005
+Ensemble test auc = 0.738005
+Ensemble test auc = 0.738005
+Ensemble test auc = 0.738005
+Ensemble test auc = 0.738005
+Fold 2
+Fold 2
+Fold 2
+Fold 2
+Fold 2
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.752564 on epoch 20
+Model 0 best validation auc = 0.752564 on epoch 20
+Model 0 best validation auc = 0.752564 on epoch 20
+Model 0 best validation auc = 0.752564 on epoch 20
+Model 0 best validation auc = 0.752564 on epoch 20
+Model 0 test auc = 0.733730
+Model 0 test auc = 0.733730
+Model 0 test auc = 0.733730
+Model 0 test auc = 0.733730
+Model 0 test auc = 0.733730
+Ensemble metrics: AUC=0.733730, Accuracy=0.640449, Precision=0.647059, Recall=0.777778, F1=0.706422
+Ensemble metrics: AUC=0.733730, Accuracy=0.640449, Precision=0.647059, Recall=0.777778, F1=0.706422
+Ensemble metrics: AUC=0.733730, Accuracy=0.640449, Precision=0.647059, Recall=0.777778, F1=0.706422
+Ensemble metrics: AUC=0.733730, Accuracy=0.640449, Precision=0.647059, Recall=0.777778, F1=0.706422
+Ensemble metrics: AUC=0.733730, Accuracy=0.640449, Precision=0.647059, Recall=0.777778, F1=0.706422
+Ensemble test auc = 0.733730
+Ensemble test auc = 0.733730
+Ensemble test auc = 0.733730
+Ensemble test auc = 0.733730
+Ensemble test auc = 0.733730
+Fold 3
+Fold 3
+Fold 3
+Fold 3
+Fold 3
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.814346 on epoch 20
+Model 0 best validation auc = 0.814346 on epoch 20
+Model 0 best validation auc = 0.814346 on epoch 20
+Model 0 best validation auc = 0.814346 on epoch 20
+Model 0 best validation auc = 0.814346 on epoch 20
+Model 0 test auc = 0.748642
+Model 0 test auc = 0.748642
+Model 0 test auc = 0.748642
+Model 0 test auc = 0.748642
+Model 0 test auc = 0.748642
+Ensemble metrics: AUC=0.748642, Accuracy=0.657303, Precision=0.647059, Recall=0.725275, F1=0.683938
+Ensemble metrics: AUC=0.748642, Accuracy=0.657303, Precision=0.647059, Recall=0.725275, F1=0.683938
+Ensemble metrics: AUC=0.748642, Accuracy=0.657303, Precision=0.647059, Recall=0.725275, F1=0.683938
+Ensemble metrics: AUC=0.748642, Accuracy=0.657303, Precision=0.647059, Recall=0.725275, F1=0.683938
+Ensemble metrics: AUC=0.748642, Accuracy=0.657303, Precision=0.647059, Recall=0.725275, F1=0.683938
+Ensemble test auc = 0.748642
+Ensemble test auc = 0.748642
+Ensemble test auc = 0.748642
+Ensemble test auc = 0.748642
+Ensemble test auc = 0.748642
+Fold 4
+Fold 4
+Fold 4
+Fold 4
+Fold 4
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Using device: cuda
+Model 0 best validation auc = 0.716327 on epoch 10
+Model 0 best validation auc = 0.716327 on epoch 10
+Model 0 best validation auc = 0.716327 on epoch 10
+Model 0 best validation auc = 0.716327 on epoch 10
+Model 0 best validation auc = 0.716327 on epoch 10
+Model 0 test auc = 0.670202
+Model 0 test auc = 0.670202
+Model 0 test auc = 0.670202
+Model 0 test auc = 0.670202
+Model 0 test auc = 0.670202
+Ensemble metrics: AUC=0.670202, Accuracy=0.584270, Precision=0.617647, Recall=0.466667, F1=0.531646
+Ensemble metrics: AUC=0.670202, Accuracy=0.584270, Precision=0.617647, Recall=0.466667, F1=0.531646
+Ensemble metrics: AUC=0.670202, Accuracy=0.584270, Precision=0.617647, Recall=0.466667, F1=0.531646
+Ensemble metrics: AUC=0.670202, Accuracy=0.584270, Precision=0.617647, Recall=0.466667, F1=0.531646
+Ensemble metrics: AUC=0.670202, Accuracy=0.584270, Precision=0.617647, Recall=0.466667, F1=0.531646
+Ensemble test auc = 0.670202
+Ensemble test auc = 0.670202
+Ensemble test auc = 0.670202
+Ensemble test auc = 0.670202
+Ensemble test auc = 0.670202
+5-fold cross validation
+5-fold cross validation
+5-fold cross validation
+5-fold cross validation
+5-fold cross validation
+Seed 400 ==> test auc = 0.751680
+Seed 400 ==> test auc = 0.751680
+Seed 400 ==> test auc = 0.751680
+Seed 400 ==> test auc = 0.751680
+Seed 400 ==> test auc = 0.751680
+Seed 401 ==> test auc = 0.738005
+Seed 401 ==> test auc = 0.738005
+Seed 401 ==> test auc = 0.738005
+Seed 401 ==> test auc = 0.738005
+Seed 401 ==> test auc = 0.738005
+Seed 402 ==> test auc = 0.733730
+Seed 402 ==> test auc = 0.733730
+Seed 402 ==> test auc = 0.733730
+Seed 402 ==> test auc = 0.733730
+Seed 402 ==> test auc = 0.733730
+Seed 403 ==> test auc = 0.748642
+Seed 403 ==> test auc = 0.748642
+Seed 403 ==> test auc = 0.748642
+Seed 403 ==> test auc = 0.748642
+Seed 403 ==> test auc = 0.748642
+Seed 404 ==> test auc = 0.670202
+Seed 404 ==> test auc = 0.670202
+Seed 404 ==> test auc = 0.670202
+Seed 404 ==> test auc = 0.670202
+Seed 404 ==> test auc = 0.670202
+Overall test auc = 0.728452 +/- 0.029864
+Overall test auc = 0.728452 +/- 0.029864
+Overall test auc = 0.728452 +/- 0.029864
+Overall test auc = 0.728452 +/- 0.029864
+Overall test auc = 0.728452 +/- 0.029864
