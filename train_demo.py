@@ -63,7 +63,7 @@ def cross_validate(args: Namespace, logger: Logger = None) -> Tuple[float, float
 
 
 if __name__ == '__main__':
-    n_repeat = 5
+    n_repeat = 1
     score_lst = []
     for i_repeat in range(n_repeat):
         args = parse_train_args()
