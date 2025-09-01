@@ -73,7 +73,7 @@ def cross_validate(args: Namespace, logger: Logger = None) -> Tuple[float, float
 
 
 if __name__ == '__main__':
-    n_repeat = 5
+    n_repeat = 1
     score_lst = []
     
     for i_repeat in range(n_repeat):
@@ -81,21 +81,31 @@ if __name__ == '__main__':
         use_gpu = torch.cuda.is_available()
         args.no_cuda = not use_gpu
         args.gpu = 0 if use_gpu else None
+
+        # DATA
         args.data_path = './data/CMPNN3_filtered.csv' # file để train
         args.dataset_type = 'classification'
+        args.split_type = 'random'
+        args.split_sizes = [0.7, 0.1, 0.2] # split train/val/test
+
+        # TRAINING / EVALUATION
         args.num_folds = 5
         args.epochs = 30
         args.ensemble_size = 1
         args.batch_size = 64
-        args.split_sizes = [0.7, 0.1, 0.2] # split train/val/test
         args.metric = 'auc'
         args.extra_metrics = ['accuracy', 'precision', 'recall', 'f1']
-        args.seed += i_repeat * 100
+        
+        # SEED & SAVE
+        # args.seed += i_repeat * 100
+        args.save_dir = './ckpt/cv5'
         
         modify_train_args(args)
         print('Using device:', 'cuda' if args.cuda else 'cpu')
         logger = create_logger(name='train', save_dir=args.save_dir, quiet=args.quiet)
+
         mean_auc_score, std_auc_score = cross_validate(args, logger)
         score_lst.append(mean_auc_score)
+    
     print(score_lst)
     print(n_repeat, f'repeats score: {np.nanmean(score_lst):.5f} +/- {np.nanstd(score_lst):.5f}')
