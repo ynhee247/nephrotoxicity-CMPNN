@@ -26,6 +26,16 @@ def cross_validate(args: Namespace, logger: Logger = None) -> Tuple[float, float
     save_dir = args.save_dir
     task_names = get_task_names(args.data_path)
 
+    # Decide which label to use in logs (no test -> 'val', otherwise 'test')
+    sep_test = getattr(args, 'separate_test_path', None)
+    split_sizes = getattr(args, 'split_sizes', None)
+    try:
+        has_test = (sep_test is not None and str(sep_test).strip() != '') or \
+                   (split_sizes is not None and len(split_sizes) >= 3 and float(split_sizes[2]) > 0.0)
+    except Exception:
+        has_test = False
+    eval_label = 'test' if has_test else 'val'
+
     # Run training on different random seeds for each fold
     all_scores = []
     for fold_num in range(args.num_folds):
@@ -42,20 +52,20 @@ def cross_validate(args: Namespace, logger: Logger = None) -> Tuple[float, float
 
     # Report scores for each fold
     for fold_num, scores in enumerate(all_scores):
-        info(f'Seed {init_seed + fold_num} ==> test {args.metric} = {np.nanmean(scores):.6f}')
+        info(f'Seed {init_seed + fold_num} ==> {eval_label} {args.metric} = {np.nanmean(scores):.6f}')
 
         if args.show_individual_scores:
             for task_name, score in zip(task_names, scores):
-                info(f'Seed {init_seed + fold_num} ==> test {task_name} {args.metric} = {score:.6f}')
+                info(f'Seed {init_seed + fold_num} ==> {eval_label} {task_name} {args.metric} = {score:.6f}')
 
     # Report scores across models
     avg_scores = np.nanmean(all_scores, axis=1)  # average score for each model across tasks
     mean_score, std_score = np.nanmean(avg_scores), np.nanstd(avg_scores)
-    info(f'Overall test {args.metric} = {mean_score:.6f} +/- {std_score:.6f}')
+    info(f'Overall {eval_label} {args.metric} = {mean_score:.6f} +/- {std_score:.6f}')
 
     if args.show_individual_scores:
         for task_num, task_name in enumerate(task_names):
-            info(f'Overall test {task_name} {args.metric} = '
+            info(f'Overall {eval_label} {task_name} {args.metric} = '
                  f'{np.nanmean(all_scores[:, task_num]):.6f} +/- {np.nanstd(all_scores[:, task_num]):.6f}')
 
     return mean_score, std_score
