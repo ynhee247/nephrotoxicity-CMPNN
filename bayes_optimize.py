@@ -63,7 +63,9 @@ def objective(params):
     args.save_dir = os.path.join(HYPEROPT_DIR, f'trial_{trial_id}')
 
     # SAVE SPLITS
-    args.save_smiles_splits_path = os.path.join(args.save_dir, 'splits.csv')
+    os.makedirs(args.save_dir, exist_ok=True)
+    args.save_smiles_splits = os.path.join(args.save_dir, 'splits.csv')
+    args.save_smiles_splits_path = args.save_smiles_splits
 
     args.epochs = 30
     args.batch_size = 64
@@ -76,7 +78,7 @@ def objective(params):
     _ = run_training(args, logger=None)   # train; test score (if any) is ignored
     
     # 2) Get validation SMILES from splits.csv
-    splits = pd.read_csv(args.save_smiles_splits_path)
+    splits = pd.read_csv(args.save_smiles_splits)
     split_col = 'split' if 'split' in splits.columns else splits.columns[-1]
     val_mask = splits[split_col].astype(str).str.lower().isin(['val', 'validation', '1'])
     val_smiles = set(splits.loc[val_mask, 'smiles'])
