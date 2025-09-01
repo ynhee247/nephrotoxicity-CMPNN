@@ -149,7 +149,6 @@ for i in range(start_eval, MAX_EVALS):
         max_evals=i + 1,
         trials=trials,
         show_progressbar=True,
-        rstate=np.random.RandomState(42),
     )
     save_progress(trials)
     best_val_auc = max(t['result']['auc'] for t in trials.trials)
