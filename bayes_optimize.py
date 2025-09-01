@@ -64,8 +64,7 @@ def objective(params):
 
     # SAVE SPLITS
     os.makedirs(args.save_dir, exist_ok=True)
-    args.save_smiles_splits = os.path.join(args.save_dir, 'splits.csv')
-    args.save_smiles_splits_path = args.save_smiles_splits
+    args.save_smiles_splits = True
 
     args.epochs = 30
     args.batch_size = 64
@@ -78,10 +77,17 @@ def objective(params):
     _ = run_training(args, logger=None)   # train; test score (if any) is ignored
     
     # 2) Get validation SMILES from splits.csv
-    splits = pd.read_csv(args.save_smiles_splits)
-    split_col = 'split' if 'split' in splits.columns else splits.columns[-1]
-    val_mask = splits[split_col].astype(str).str.lower().isin(['val', 'validation', '1'])
-    val_smiles = set(splits.loc[val_mask, 'smiles'])
+    val_list_path = os.path.join(args.save_dir, 'val_smiles.csv')
+    if not os.path.exists(val_list_path):
+        raise FileNotFoundError(f"Missing {val_list_path}. Did save_smiles_splits fail?")
+
+    val_df = pd.read_csv(val_list_path)
+    if val_df.shape[1] == 1:
+        val_df.columns = ['smiles']
+    if 'smiles' not in val_df.columns:
+        val_df.columns = ['smiles']
+
+    val_smiles = set(val_df['smiles'].astype(str))
 
     # 3) Build val.csv from original data
     df_all = pd.read_csv(args.data_path)
