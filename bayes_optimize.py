@@ -97,11 +97,17 @@ def objective(params):
 
     # 4) Predict on validation using best checkpoint in args.save_dir
     pred_csv = os.path.join(args.save_dir, 'val_preds.csv')
-    p_args = parse_predict_args([
-        '--test_path', val_csv,
-        '--checkpoint_dir', args.save_dir,
-        '--preds_path', pred_csv
-    ])
+    
+    p_args = parse_predict_args()
+    p_args.test_path = val_csv
+    p_args.checkpoint_dir = args.save_dir
+    p_args.preds_path = pred_csv
+    p_args.no_cuda = args.no_cuda
+    p_args.gpu = args.gpu
+    p_args.batch_size = args.batch_size
+    p_args.smiles_column = 'smiles'
+    p_args.dataset_type = 'classification'
+    
     make_predictions(p_args)
 
     # 4) Compute val_AUC
