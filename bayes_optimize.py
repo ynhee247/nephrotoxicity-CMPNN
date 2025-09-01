@@ -1,10 +1,15 @@
+import torch
 import csv
 import os
 import pickle
+import pandas as pd
+import numpy as np
 from hyperopt import fmin, tpe, hp, Trials, STATUS_OK
-from chemprop.parsing import parse_train_args, modify_train_args
-from train import cross_validate
-import torch
+from chemprop.parsing import parse_train_args, modify_train_args, parse_predict_args
+from chemprop.train.run_training import run_training
+from chemprop.train import make_predictions
+from chemprop.data.utils import get_task_names
+from sklearn.metrics import roc_auc_score
 
 
 CKPT_DIR = 'ckpt'
@@ -57,11 +62,49 @@ def objective(params):
     trial_id = len(trials.trials)
     args.save_dir = os.path.join(HYPEROPT_DIR, f'trial_{trial_id}')
 
+    # SAVE SPLITS
+    args.save_smiles_splits_path = os.path.join(args.save_dir, 'splits.csv')
+
+    args.epochs = 30
+    args.batch_size = 64
+    args.ensemble_size = 1
     modify_train_args(args)
     print('Using device:', 'cuda' if args.cuda else 'cpu')
 
-    auc, _ = cross_validate(args)
-    return {'loss': -auc, 'status': STATUS_OK, 'params': params, 'auc': auc}
+    # COMPUTE val_AUC (manually)
+    # 1) Train (bỏ qua giá trị trả về vì đó là test score)
+    _ = run_training(args, logger=None)   # train; test score (if any) is ignored
+    
+    # 2) Get validation SMILES from splits.csv
+    splits = pd.read_csv(args.save_smiles_splits_path)
+    split_col = 'split' if 'split' in splits.columns else splits.columns[-1]
+    val_mask = splits[split_col].astype(str).str.lower().isin(['val', 'validation', '1'])
+    val_smiles = set(splits.loc[val_mask, 'smiles'])
+
+    # 3) Build val.csv from original data
+    df_all = pd.read_csv(args.data_path)
+    df_val = df_all[df_all['smiles'].isin(val_smiles)].copy()
+    val_csv = os.path.join(args.save_dir, 'val.csv')
+    df_val.to_csv(val_csv, index=False)
+
+    # 4) Predict on validation using best checkpoint in args.save_dir
+    pred_csv = os.path.join(args.save_dir, 'val_preds.csv')
+    p_args = parse_predict_args([
+        '--test_path', val_csv,
+        '--checkpoint_dir', args.save_dir,
+        '--preds_path', pred_csv
+    ])
+    make_predictions(p_args)
+
+    # 4) Compute val_AUC
+    task = get_task_names(args.data_path)[0]
+    preds_df = pd.read_csv(pred_csv)
+    y_true = df_val[task].values
+    y_pred = preds_df[task].values if task in preds_df.columns else preds_df.iloc[:, -1].values
+
+    val_auc = float(roc_auc_score(y_true, y_pred))
+
+    return {'loss': -val_auc, 'status': STATUS_OK, 'params': params, 'auc': val_auc}
 
 
 def save_progress(trials: Trials) -> None:
@@ -106,6 +149,7 @@ for i in range(start_eval, MAX_EVALS):
         max_evals=i + 1,
         trials=trials,
         show_progressbar=True,
+        rstate=np.random.RandomState(42),
     )
     save_progress(trials)
     best_val_auc = max(t['result']['auc'] for t in trials.trials)
