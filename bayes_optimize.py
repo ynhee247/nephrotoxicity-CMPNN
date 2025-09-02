@@ -109,13 +109,15 @@ def objective(params):
         raise FileNotFoundError(f"No .pt checkpoint found under {save_dir}")
 
     ckpt_path = _find_ckpt(args.save_dir)
+    if os.path.isdir(os.path.join(args.save_dir, 'model_0')):
+        ckpt_dir = os.path.join(args.save_dir, 'model_0')
 
     pred_csv = os.path.join(args.save_dir, 'val_preds.csv')
     
     p_args = parse_predict_args()
     p_args.test_path = val_csv
-    p_args.checkpoint_dir = args.save_dir
-    p_args.preds_path = pred_csv
+    p_args.checkpoint_dir = ckpt_dir
+    p_args.preds_path = None 
 
     # Set device/batch_size
     use_gpu = torch.cuda.is_available()
@@ -131,13 +133,12 @@ def objective(params):
         p_args.dataset_type = 'classification'
     
     make_predictions(p_args)
-    assert os.path.exists(pred_csv), f"Pred file not created: {pred_csv}"
+    y_pred = np.asarray(preds).reshape(-1)
 
     # 5) Compute val_AUC
     task = get_task_names(args.data_path)[0]
     preds_df = pd.read_csv(pred_csv)
     y_true = df_val[task].values
-    y_pred = preds_df[task].values if task in preds_df.columns else preds_df.iloc[:, -1].values
 
     val_auc = float(roc_auc_score(y_true, y_pred))
 
