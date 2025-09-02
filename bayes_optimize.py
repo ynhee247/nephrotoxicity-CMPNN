@@ -92,10 +92,24 @@ def objective(params):
     # 3) Build val.csv from original data
     df_all = pd.read_csv(args.data_path)
     df_val = df_all[df_all['smiles'].isin(val_smiles)].copy()
+    assert len(df_val) > 0, "Validation set is empty. Check val_smiles.csv and 'smiles' column."
     val_csv = os.path.join(args.save_dir, 'val.csv')
     df_val.to_csv(val_csv, index=False)
 
     # 4) Predict on validation using best checkpoint in args.save_dir
+    # Find the exact checkpoint (.pt)
+    def _find_ckpt(save_dir: str) -> str:
+        cand = os.path.join(save_dir, 'model.pt')
+        if os.path.exists(cand): 
+            return cand
+        for root, _, files in os.walk(save_dir):
+            for f in files:
+                if f.endswith('.pt'):
+                    return os.path.join(root, f)
+        raise FileNotFoundError(f"No .pt checkpoint found under {save_dir}")
+
+    ckpt_path = _find_ckpt(args.save_dir)
+
     pred_csv = os.path.join(args.save_dir, 'val_preds.csv')
     
     p_args = parse_predict_args()
@@ -111,15 +125,15 @@ def objective(params):
         p_args.gpu = 0
     if hasattr(p_args, 'batch_size'):
         p_args.batch_size = getattr(args, 'batch_size', 64)
-
     if hasattr(p_args, 'smiles_column'):
         p_args.smiles_column = 'smiles'
     if hasattr(p_args, 'dataset_type'):
         p_args.dataset_type = 'classification'
     
     make_predictions(p_args)
+    assert os.path.exists(pred_csv), f"Pred file not created: {pred_csv}"
 
-    # 4) Compute val_AUC
+    # 5) Compute val_AUC
     task = get_task_names(args.data_path)[0]
     preds_df = pd.read_csv(pred_csv)
     y_true = df_val[task].values
