@@ -98,26 +98,14 @@ def objective(params):
 
     # 4) Predict on validation using best checkpoint in args.save_dir
     # Find the exact checkpoint (.pt)
-    def _find_ckpt(save_dir: str) -> str:
-        cand = os.path.join(save_dir, 'model.pt')
-        if os.path.exists(cand): 
-            return cand
-        for root, _, files in os.walk(save_dir):
-            for f in files:
-                if f.endswith('.pt'):
-                    return os.path.join(root, f)
-        raise FileNotFoundError(f"No .pt checkpoint found under {save_dir}")
-
-    ckpt_path = _find_ckpt(args.save_dir)
+    ckpt_dir = args.save_dir
     if os.path.isdir(os.path.join(args.save_dir, 'model_0')):
         ckpt_dir = os.path.join(args.save_dir, 'model_0')
 
-    pred_csv = os.path.join(args.save_dir, 'val_preds.csv')
-    
     p_args = parse_predict_args()
     p_args.test_path = val_csv
     p_args.checkpoint_dir = ckpt_dir
-    p_args.preds_path = None 
+    p_args.preds_path = None
 
     # Set device/batch_size
     use_gpu = torch.cuda.is_available()
@@ -133,12 +121,13 @@ def objective(params):
         p_args.dataset_type = 'classification'
     
     make_predictions(p_args)
-    y_pred = np.asarray(preds).reshape(-1)
+    preds = np.asarray(preds)
+    y_pred = preds[:, 0] if preds.ndim == 2 else preds.reshape(-1)
 
     # 5) Compute val_AUC
     task = get_task_names(args.data_path)[0]
-    preds_df = pd.read_csv(pred_csv)
     y_true = df_val[task].values
+    assert len(y_true) == len(y_pred), f"Length mismatch: y_true={len(y_true)} vs y_pred={len(y_pred)}"
 
     val_auc = float(roc_auc_score(y_true, y_pred))
 
