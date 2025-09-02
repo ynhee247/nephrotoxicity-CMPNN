@@ -102,11 +102,20 @@ def objective(params):
     p_args.test_path = val_csv
     p_args.checkpoint_dir = args.save_dir
     p_args.preds_path = pred_csv
-    p_args.no_cuda = args.no_cuda
-    p_args.gpu = args.gpu
-    p_args.batch_size = args.batch_size
-    p_args.smiles_column = 'smiles'
-    p_args.dataset_type = 'classification'
+
+    # Set device/batch_size
+    use_gpu = torch.cuda.is_available()
+    if hasattr(p_args, 'no_cuda'):
+        p_args.no_cuda = not use_gpu
+    if hasattr(p_args, 'gpu') and use_gpu:
+        p_args.gpu = 0
+    if hasattr(p_args, 'batch_size'):
+        p_args.batch_size = getattr(args, 'batch_size', 64)
+
+    if hasattr(p_args, 'smiles_column'):
+        p_args.smiles_column = 'smiles'
+    if hasattr(p_args, 'dataset_type'):
+        p_args.dataset_type = 'classification'
     
     make_predictions(p_args)
 
