@@ -8,6 +8,7 @@ import os
 from typing import Tuple
 
 import numpy as np
+import csv
 
 from chemprop.train.run_training import run_training
 from chemprop.data.utils import get_task_names
@@ -82,6 +83,17 @@ if __name__ == '__main__':
         args.no_cuda = not use_gpu
         args.gpu = 0 if use_gpu else None
 
+        # Load optimal hyperparameters from Bayesian optimization results
+        with open('results/bayesian-optimization/bayes_optimize_results.csv', 'r') as f:
+            reader = csv.DictReader(f)
+            best_row = max(reader, key=lambda row: float(row['test_AUC']))
+
+        args.dropout = float(best_row['dropout'])
+        args.depth = int(best_row['depth'])
+        args.hidden_size = int(best_row['hidden_size'])
+        args.ffn_num_layers = int(best_row['ffn_num_layers'])
+        print('Best hyperparameters from Bayesian optimization:', best_row)
+
         # DATA
         args.data_path = './data/CMPNN3_filtered.csv' # file để train
         args.dataset_type = 'classification'
@@ -98,7 +110,7 @@ if __name__ == '__main__':
         
         # SEED & SAVE
         # args.seed += i_repeat * 100
-        args.save_dir = './ckpt/cv5'
+        args.save_dir = './results/train/ckpt/cv5'
         
         modify_train_args(args)
         print('Using device:', 'cuda' if args.cuda else 'cpu')
