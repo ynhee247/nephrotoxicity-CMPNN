@@ -26,27 +26,26 @@ def objective(params):
     args.dataset_type = 'classification'
     args.metric = 'auc'
     args.data_path = './data/CMPNN3_filtered.csv'
-    args.split_sizes = [0.9, 0.1, 0.0] # dùng validation AUC -> bỏ test set
     args.dropout = params['dropout']
     args.depth = params['depth']
     args.hidden_size = params['hidden_size']
     args.ffn_num_layers = params['ffn_num_layers']
     modify_train_args(args)
     print('Using device:', 'cuda' if args.cuda else 'cpu')
-    val_auc, _ = cross_validate(args)
-    return {'loss': -val_auc, 'status': STATUS_OK, 'params': params, 'auc': val_auc}
+    auc, _ = cross_validate(args)
+    return {'loss': -auc, 'status': STATUS_OK, 'params': params, 'auc': auc}
 
 
 def save_progress(trials: Trials) -> None:
     """Persist trials and write results to CSV."""
 
-    with open('bayesian_trials.pkl', 'wb') as fp:
+    with open('trials.pkl', 'wb') as fp:
         pickle.dump(trials, fp)
 
-    with open('bayesian_optimization_results.csv', 'w', newline='') as fp:
+    with open('bayes_optimize_results.csv', 'w', newline='') as fp:
         writer = csv.writer(fp)
         writer.writerow(
-            ['dropout', 'depth', 'hidden_size', 'ffn_num_layers', 'val_AUC']
+            ['dropout', 'depth', 'hidden_size', 'ffn_num_layers', 'test_AUC']
         )
         for trial in trials.trials:
             params = trial['result']['params']
@@ -61,8 +60,8 @@ def save_progress(trials: Trials) -> None:
             )
 
 
-if os.path.exists('bayesian_trials.pkl'):
-    with open('bayesian_trials.pkl', 'rb') as fp:
+if os.path.exists('trials.pkl'):
+    with open('trials.pkl', 'rb') as fp:
         trials: Trials = pickle.load(fp)
     print(f"Loaded {len(trials.trials)} previous trials")
 else:
