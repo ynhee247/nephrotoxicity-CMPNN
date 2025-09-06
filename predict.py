@@ -12,7 +12,7 @@ from chemprop.train import make_predictions
 
 if __name__ == '__main__':
     args = parse_train_args()
-    args.checkpoint_dir = '.results/train/ckpt/cv5'
+    args.checkpoint_dir = './results/train/ckpt/cv5'
     modify_train_args(args)
     
     df = pd.read_csv(args.data_path)
