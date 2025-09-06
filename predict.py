@@ -12,7 +12,7 @@ from chemprop.train import make_predictions
 
 if __name__ == '__main__':
     args = parse_train_args()
-    args.checkpoint_dir = './ckpt'
+    args.checkpoint_dir = '.results/train/ckpt/cv5'
     modify_train_args(args)
     
     df = pd.read_csv(args.data_path)
@@ -20,4 +20,4 @@ if __name__ == '__main__':
     df = pd.DataFrame({'smiles':smiles})
     for i in range(len(pred[0])):
         df[f'pred_{i}'] = [item[i] for item in pred]
-    df.to_csv(f'./predict.csv', index=False)
+    df.to_csv(f'./predict_result.csv', index=False)
